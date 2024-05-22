@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chapter09.MemberMapper">
+	<insert id="insert" parameterType="chapter09.MemberVO">
+		INSERT INTO member (
+			no, id, pwd, name 
+		) VALUES (
+			member_seq.nextval, #{id}, #{pwd}, #{name} 
+		)
+		<selectKey order="AFTER" keyProperty="no" resultType="int">
+			SELECT member_seq.currval FROM dual
+		</selectKey>
+	</insert>
+	<insert id="insertHobby" parameterType="chapter09.HobbyVO">
+		INSERT INTO hobby (
+			member_no, name
+		) VALUES (
+			#{member_no}, #{name}
+		)
+	</insert>
+</mapper>

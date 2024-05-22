@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chapter12.MemberMapper">
+	<insert id="insert" parameterType="chapter12.MemberVO">
+		INSERT INTO member (
+			no, id, pwd, name, filename_org, filename_real 
+		) VALUES (
+			member_seq.nextval, #{id}, #{pwd}, #{name}, #{filename_org}, #{filename_real}
+		)
+		<selectKey order="AFTER" keyProperty="no" resultType="int">
+			SELECT member_seq.currval FROM dual
+		</selectKey>
+	</insert>
+	<insert id="insertHobby" parameterType="chapter12.HobbyVO">
+		INSERT INTO hobby (
+			member_no, name
+		) VALUES (
+			#{member_no}, #{name}
+		)
+	</insert>
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM member WHERE id=#{id}
+	</select>
+	
+	<select id="login" parameterType="chapter12.MemberVO" resultType="chapter12.MemberVO">
+		SELECT * FROM member WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<select id="mypage" parameterType="int" resultType="chapter12.MemberVO">
+		SELECT * FROM member WHERE no = #{no}
+	</select>
+	
+	
+	
+</mapper>
