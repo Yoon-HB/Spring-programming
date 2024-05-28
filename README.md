@@ -1,10 +1,6 @@
 # Spring-programming
 Spring 개념 다지기
 
-네, 아래 내용을 그대로 복사하여 `README.md` 파일에 붙여넣으면 됩니다.
-
----
-
 # Spring Framework Guide
 
 ## Chapter 01: Bean 설정 방법
