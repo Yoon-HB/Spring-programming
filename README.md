@@ -1,7 +1,6 @@
 # Spring-programming
 Spring 개념 다지기
 
-# Spring Framework Guide
 
 ## Chapter 01: Bean 설정 방법
 - **Bean 등록, 저장, 사용**
